@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     "use strict";
 
@@ -40,7 +40,7 @@ $(function() {
             }
         });
     });
-    
+
 
     //===== close navbar-collapse when a  clicked
 
@@ -55,7 +55,7 @@ $(function() {
     $(".navbar-nav a").on('click', function () {
         $(".navbar-toggler").removeClass('active');
     });
-    
+
 
     //===== Back to top
 
@@ -92,3 +92,23 @@ $(function() {
 
 
 });
+
+function nextSlideBootstrap() {
+    var currentSlide = $('#carousel').find('.active');
+    var nextSlide = currentSlide.next();
+    if (nextSlide.length == 0) {
+        nextSlide = $('#carousel').find('.carousel-item').first();
+    }
+    nextSlide.addClass('active');
+    currentSlide.removeClass('active');
+}
+
+function prevSlideBootstrap() {
+    var currentSlide = $('#carousel').find('.active');
+    var prevSlide = currentSlide.prev();
+    if (prevSlide.length == 0) {
+        prevSlide = $('#carousel').find('.carousel-item').last();
+    }
+    prevSlide.addClass('active');
+    currentSlide.removeClass('active');
+}

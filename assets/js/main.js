@@ -13,12 +13,9 @@ $(function () {
     //===== Gallery Images
     var getDirectories = () => {
         $.ajax({
-            url: "./assets/php/actions.php",
-            type: "POST",
+            url: "./assets/php/actions.php?action=get_images",
+            type: "GET",
             content_type: "application/json",
-            data: {
-                action: "get_images",
-            },
             success: function (data) {
                 console.log(data);
                 var dotComaReplaced = data.replaceAll(";", "");

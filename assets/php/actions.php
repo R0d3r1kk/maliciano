@@ -1,7 +1,7 @@
 <?php
 include "functions.php";
 
-$action = $_POST["action"] ?? "";
+$action = $_REQUEST["action"] ?? "";
 $data = null;
 switch($action){
     case "get_images":

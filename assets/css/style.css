@@ -725,7 +725,8 @@ p {
 .navbar-nav .nav-item a {
   font-size: 16px;
   font-weight: 400;
-  color: #fff;
+  /* color: #fff; */
+  color: rgba(26, 49, 84, 1);
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -949,7 +950,7 @@ p {
 .single_slider::before {
   position: absolute;
   content: '';
-  background-color: rgba(26, 49, 84, 0.52);
+  /* background-color: rgba(26, 49, 84, 0.52); */
   width: 100%;
   height: 100%;
   left: 0;
@@ -1060,7 +1061,7 @@ p {
 .about_image img {
   width: 100%;
   border-radius: 40px;
-  border-bottom-right-radius: 0;
+  /* border-bottom-right-radius: 0; */
 }
 
 .about_content {
@@ -1194,6 +1195,30 @@ p {
   overflow: hidden;
   border-top-left-radius: 150px;
   border-bottom-right-radius: 150px;
+}
+
+.counter_area .container {
+  position: relative;
+  z-index: 2;
+}
+.counter_area .backdrop {
+  position: absolute;
+  background-color: rgba(26, 49, 84, 0.52);
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100%;
+  z-index: 1;
+}
+
+
+.counter_area .team-video {
+  position: absolute;
+  top: -25%;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 150%;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1529,6 +1554,7 @@ p.form-message.error.form-message.error {
   border-radius: 35px;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 .button-carousel {
@@ -1557,4 +1583,74 @@ p.form-message.error.form-message.error {
     height: 30px;
   }
   
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+.caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
 }

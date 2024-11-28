@@ -17,7 +17,6 @@ $(function () {
             type: "GET",
             content_type: "application/json",
             success: function (data) {
-                console.log(data);
                 var dotComaReplaced = data.replaceAll(";", "");
                 var bracketReplaced = dotComaReplaced.replace("[", "");
                 var bracketReplaced = bracketReplaced.replace("]", "");

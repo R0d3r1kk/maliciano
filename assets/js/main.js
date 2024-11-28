@@ -6,22 +6,26 @@ $(function () {
     //===== Prealoder
 
     $(window).on('load', function (event) {
-        getDirectories();
+        //getDirectories();
         $('.preloader').delay(500).fadeOut(500);
     });
 
     //===== Gallery Images
     var getDirectories = () => {
         $.ajax({
-            url: "./assets/php/actions.php?action=get_images",
-            type: "GET",
-            content_type: "application/json",
+            url: "./assets/php/actions.php",
+            type: "POST",
+            content_type:"application/json",
+            data: {
+                action: "get_images",
+            },
             success: function (data) {
+                console.log(data);
                 var dotComaReplaced = data.replaceAll(";", "");
                 var bracketReplaced = dotComaReplaced.replace("[", "");
                 var bracketReplaced = bracketReplaced.replace("]", "");
                 var imgList = bracketReplaced.split(",");
-
+                
 
                 imgList.map(imgpath => {
                     var imgpath = imgpath.replace("..", "");
@@ -29,7 +33,7 @@ $(function () {
                     var imgpath = imgpath.replaceAll("\\", "");
                     var path = "./assets" + imgpath;
                     var ca_item = $("<div class='carousel-item'></div>")
-                        .append(img_create(path, 'img-item d-block w-100'));
+                    .append(img_create(path,'img-item d-block w-100'));
                     $('#carousel-image-container').append(ca_item);
                 });
             },
@@ -39,8 +43,7 @@ $(function () {
         });
     }
 
-
-
+   
     function img_create(src, clases, alt = "...", title = null) {
         var img = document.createElement('img');
         img.src = src;
@@ -149,6 +152,29 @@ $(function () {
     wow.init();
 
     //===== 
+
+    // Get the modal
+    var modal = document.getElementById("GalleryModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var images = document.getElementsByClassName("img-item");
+    var modalImg = document.getElementById("ImgPreview");
+    var captionText = document.getElementById("ImgCaption");
+    for (let element of images) {
+        element.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+    };
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementById("ModalClose");
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
 
 });
 
